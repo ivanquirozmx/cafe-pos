@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nombre": "Administrador",
+    "usuario": "admin",
+    "password": "$2b$10$BfOJHyVwsNuDm34TwdkctuyjpdqIbQtPZMiuMeSHB4ruXtIEXXb16",
+    "rol": "admin"
+  },
+  {
+    "id": 2,
+    "nombre": "Vendedor",
+    "usuario": "vendedor",
+    "password": "$2b$10$ngfBmRrj22TjIKhGSP3oQOSngpQr94rKfRoG7xIMQTGAcFTui5bUO",
+    "rol": "vendedor"
+  }
+]

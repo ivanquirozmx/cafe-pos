@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "nombre": "María López",
+    "telefono": "555-0101",
+    "visitas": 15,
+    "descuento": 10,
+    "notas": "Le gusta el café sin azúcar"
+  },
+  {
+    "id": 2,
+    "nombre": "Carlos Mendoza",
+    "telefono": "555-0202",
+    "visitas": 8,
+    "descuento": 5,
+    "notas": "Alérgico a la lactosa, siempre pide leche de avena"
+  },
+  {
+    "id": 3,
+    "nombre": "Ana Torres",
+    "telefono": "555-0303",
+    "visitas": 5,
+    "descuento": 0,
+    "notas": ""
+  },
+  {
+    "id": 1781659328555,
+    "nombre": "Feank",
+    "telefono": "",
+    "visitas": 0,
+    "descuento": 0,
+    "notas": "Admin",
+    "creadoEn": "2026-06-17T01:22:08.555Z"
+  }
+]

@@ -1,0 +1,887 @@
+/* ============================================
+   style.css - Estilos del Café POS
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cafe-oscuro: #3b2219;
+  --cafe-medio: #4a2c2a;
+  --cafe-claro: #c8a882;
+  --fondo: #f5f0eb;
+  --blanco: #ffffff;
+  --borde: #e0d5cc;
+  --verde: #2e7d32;
+  --rojo: #c62828;
+  --radio: 10px;
+  --sombra: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--fondo);
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==================
+   Header
+   ================== */
+header {
+  background: var(--cafe-medio);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.header-izq {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+header h1 {
+  font-size: 1.3rem;
+  white-space: nowrap;
+}
+
+#fecha-hora {
+  font-size: 0.82rem;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+
+/* ==================
+   Tabs de navegación
+   ================== */
+#tabs {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.tab {
+  padding: 0.4rem 0.9rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 500;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.75);
+  transition: all 0.2s;
+}
+
+.tab:hover { background: rgba(255,255,255,0.2); color: white; }
+
+.tab.activo {
+  background: white;
+  color: var(--cafe-medio);
+  font-weight: 600;
+}
+
+/* ==================
+   Contenidos de tabs
+   ================== */
+.tab-contenido { flex: 1; }
+.tab-contenido.oculto { display: none; }
+
+/* ==================
+   Layout POS: dos columnas
+   ================== */
+#tab-pos main {
+  display: grid;
+  grid-template-columns: 1fr 370px;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  height: calc(100vh - 60px);
+}
+
+section {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  padding: 1.25rem;
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+section h2 {
+  font-size: 1rem;
+  color: var(--cafe-medio);
+  margin-bottom: 0.875rem;
+  border-bottom: 2px solid var(--fondo);
+  padding-bottom: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* ==================
+   Filtros de categoría
+   ================== */
+#filtros-categoria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.875rem;
+  flex-shrink: 0;
+}
+
+.btn-categoria {
+  padding: 0.3rem 0.8rem;
+  border: 2px solid var(--cafe-claro);
+  background: white;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.15s;
+}
+
+.btn-categoria.activo,
+.btn-categoria:hover {
+  background: var(--cafe-medio);
+  color: white;
+  border-color: var(--cafe-medio);
+}
+
+/* ==================
+   Grid de productos
+   ================== */
+#lista-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.65rem;
+  overflow-y: auto;
+  align-content: start;
+}
+
+.tarjeta-producto {
+  border: 2px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 0.75rem 0.6rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  background: #fdfaf7;
+  user-select: none;
+}
+
+.tarjeta-producto:hover {
+  border-color: var(--cafe-claro);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.tarjeta-producto:active { transform: translateY(0); }
+
+.tarjeta-producto.no-disponible {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.tarjeta-producto.no-disponible:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--borde);
+}
+
+.tarjeta-producto .nombre { font-weight: 600; font-size: 0.85rem; }
+.tarjeta-producto .precio { color: var(--cafe-medio); font-size: 0.95rem; margin-top: 0.25rem; font-weight: 700; }
+.tarjeta-producto .categoria { color: #aaa; font-size: 0.7rem; margin-top: 0.15rem; }
+
+.badge-no-disp {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.65rem;
+  color: var(--rojo);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* ==================
+   Skeleton loader
+   ================== */
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.65rem;
+  grid-column: 1 / -1;
+}
+
+.skeleton {
+  height: 90px;
+  border-radius: var(--radio);
+  background: linear-gradient(90deg, #ede5dc 25%, #f5ede5 50%, #ede5dc 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ==================
+   Sección cliente (POS)
+   ================== */
+#seccion-cliente { margin-bottom: 0.875rem; flex-shrink: 0; }
+
+.input-con-boton {
+  display: flex;
+  gap: 0.4rem;
+}
+
+#buscar-cliente {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--borde);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+#buscar-cliente:focus { border-color: var(--cafe-claro); }
+
+.btn-icono {
+  padding: 0 0.6rem;
+  border: 2px solid var(--borde);
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  color: #999;
+  font-size: 0.9rem;
+  transition: all 0.15s;
+}
+
+.btn-icono:hover { border-color: var(--rojo); color: var(--rojo); }
+
+#resultado-cliente { margin-top: 0.4rem; }
+
+.sugerencia-cliente {
+  padding: 0.4rem 0.75rem;
+  background: var(--fondo);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+  transition: background 0.1s;
+}
+
+.sugerencia-cliente:hover { background: var(--borde); }
+
+.badge-descuento {
+  background: var(--cafe-medio);
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.cliente-asignado {
+  background: #e8f5e9;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--verde);
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sin-resultados { font-size: 0.82rem; color: #aaa; padding: 0.2rem 0.75rem; }
+
+/* ==================
+   Lista de items de la orden
+   ================== */
+#lista-orden {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 0.75rem;
+  min-height: 80px;
+}
+
+.item-orden {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid #f0e8e0;
+  gap: 0.5rem;
+}
+
+.item-orden .nombre { font-size: 0.88rem; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.controles-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.controles-cantidad button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: var(--cafe-medio);
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s;
+}
+
+.controles-cantidad button:hover { opacity: 0.8; }
+.controles-cantidad span { min-width: 18px; text-align: center; font-weight: 600; font-size: 0.9rem; }
+.item-precio { min-width: 60px; text-align: right; font-weight: 600; color: var(--cafe-medio); font-size: 0.9rem; }
+
+.orden-vacia {
+  text-align: center;
+  color: #bbb;
+  padding: 2rem 0;
+  font-size: 0.88rem;
+}
+
+/* ==================
+   Totales
+   ================== */
+#totales {
+  border-top: 2px solid #f0e8e0;
+  padding-top: 0.6rem;
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+}
+
+.linea-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.15rem 0;
+  font-size: 0.88rem;
+}
+
+.linea-total.descuento { color: var(--verde); }
+.linea-total.total {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: var(--cafe-medio);
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--borde);
+}
+
+/* ==================
+   Acciones
+   ================== */
+#acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+#metodo-pago {
+  padding: 0.5rem;
+  border: 2px solid var(--borde);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  background: white;
+  cursor: pointer;
+}
+
+.btn-primary, .btn-danger, .btn-secundario {
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-primary {
+  background: var(--cafe-medio);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) { background: var(--cafe-oscuro); }
+
+.btn-primary:disabled {
+  background: #c5b8b0;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  background: var(--fondo);
+  color: #aaa;
+}
+
+.btn-danger:hover { background: #fce4e4; color: var(--rojo); }
+
+.btn-secundario {
+  background: white;
+  color: var(--cafe-medio);
+  border: 2px solid var(--cafe-claro);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.btn-secundario:hover { background: var(--fondo); }
+
+/* ==================
+   Modal
+   ================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  backdrop-filter: blur(2px);
+}
+
+.modal.oculto { display: none; }
+
+.modal-contenido {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 420px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-icono { font-size: 2.5rem; text-align: center; margin-bottom: 0.5rem; }
+.modal-contenido h3 { color: var(--cafe-medio); font-size: 1.3rem; margin-bottom: 1rem; text-align: center; }
+
+.modal-pequeno { max-width: 320px; }
+.modal-pequeno p { font-size: 1rem; text-align: center; margin-bottom: 0.5rem; color: #444; }
+
+.modal-botones {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+}
+
+.modal-botones .btn-primary { flex: 1; }
+.modal-botones .btn-danger { flex: 1; }
+
+/* ==================
+   Ticket de venta
+   ================== */
+.tabla-ticket {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.tabla-ticket th {
+  background: var(--fondo);
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+  font-size: 0.78rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tabla-ticket td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--fondo);
+}
+
+.ticket-totales { font-size: 0.88rem; }
+
+.ticket-fila {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+  border-top: 1px solid var(--fondo);
+}
+
+.ticket-fila.descuento { color: var(--verde); }
+.ticket-fila.total { font-weight: bold; font-size: 1rem; color: var(--cafe-medio); border-top: 2px solid var(--cafe-claro); margin-top: 0.3rem; padding-top: 0.4rem; }
+
+/* ==================
+   Forms en modales
+   ================== */
+.campo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.875rem;
+}
+
+.campo-form label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.campo-form input {
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--borde);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.campo-form input:focus { border-color: var(--cafe-claro); }
+
+/* ==================
+   Contenedor de tabs (Historial, Productos, Clientes)
+   ================== */
+.contenedor-tab {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+}
+
+.historial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.historial-header h2 {
+  color: var(--cafe-medio);
+  font-size: 1.2rem;
+}
+
+.filtros-fecha {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+}
+
+.filtros-fecha label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.filtros-fecha input[type="date"] {
+  padding: 0.35rem 0.5rem;
+  border: 2px solid var(--borde);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.filtros-fecha input[type="date"]:focus { border-color: var(--cafe-claro); }
+
+/* ==================
+   Cards de resumen
+   ================== */
+.resumen-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.resumen-card {
+  background: white;
+  border-radius: var(--radio);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--sombra);
+  text-align: center;
+}
+
+.resumen-valor {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--cafe-medio);
+}
+
+.resumen-label {
+  font-size: 0.78rem;
+  color: #999;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==================
+   Tablas historial / admin
+   ================== */
+.tabla-scroll {
+  overflow-x: auto;
+  background: white;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+.tabla-historial {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.tabla-historial thead tr {
+  background: var(--fondo);
+}
+
+.tabla-historial th {
+  padding: 0.65rem 1rem;
+  text-align: left;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #777;
+  white-space: nowrap;
+}
+
+.tabla-historial td {
+  padding: 0.65rem 1rem;
+  border-top: 1px solid var(--fondo);
+  vertical-align: middle;
+}
+
+.tabla-historial tbody tr:hover { background: #fdfaf7; }
+
+.fila-inactiva { opacity: 0.55; }
+
+.fecha-dia { font-size: 0.78rem; color: #888; }
+.fecha-hora { font-weight: 600; color: var(--cafe-medio); }
+
+.celda-productos {
+  color: #555;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.celda-total { font-weight: 700; color: var(--cafe-medio); white-space: nowrap; }
+
+.btn-tabla {
+  padding: 0.3rem 0.7rem;
+  border: 2px solid var(--cafe-claro);
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cafe-medio);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.btn-tabla:hover { background: var(--cafe-medio); color: white; border-color: var(--cafe-medio); }
+
+/* ==================
+   Badges de estado
+   ================== */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-activo { background: #e8f5e9; color: var(--verde); }
+.badge-inactivo { background: #fce4e4; color: var(--rojo); }
+
+/* ==================
+   Descuento inline
+   ================== */
+.descuento-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.input-descuento {
+  width: 55px;
+  padding: 0.25rem 0.4rem;
+  border: 2px solid var(--borde);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  text-align: center;
+  outline: none;
+}
+
+.input-descuento:focus { border-color: var(--cafe-claro); }
+
+/* ==================
+   Estados vacíos y de error
+   ================== */
+.estado-vacio, .estado-error {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  border-radius: var(--radio);
+  font-size: 0.9rem;
+}
+
+.estado-vacio { color: #bbb; }
+.estado-error { color: var(--rojo); background: #fff5f5; border: 1px solid #fce4e4; }
+
+/* ==================
+   Toast de notificaciones
+   ================== */
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  z-index: 300;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  animation: slideIn 0.25s ease;
+  max-width: 320px;
+}
+
+.toast.oculto { display: none; }
+.toast-success { background: #2e7d32; color: white; }
+.toast-error { background: #c62828; color: white; }
+.toast-info { background: var(--cafe-medio); color: white; }
+
+@keyframes slideIn {
+  from { transform: translateY(10px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* ==================
+   Pantalla de login
+   ================== */
+.pantalla-login {
+  position: fixed;
+  inset: 0;
+  background: var(--fondo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+}
+
+.pantalla-login.oculto { display: none !important; }
+
+.login-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  max-width: 380px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+.login-logo { font-size: 3rem; margin-bottom: 0.5rem; }
+
+.login-card h2 {
+  color: var(--cafe-medio);
+  font-size: 1.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.login-subtitle {
+  color: #999;
+  font-size: 0.88rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-error {
+  color: var(--rojo);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  background: #fff5f5;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #fce4e4;
+  text-align: left;
+}
+
+.btn-login-submit {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.login-card .campo-form { text-align: left; }
+
+/* ==================
+   Header: usuario y logout
+   ================== */
+.header-der {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+#info-usuario {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+}
+
+#usuario-nombre {
+  opacity: 0.85;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-logout {
+  padding: 0.3rem 0.75rem;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 6px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 0.78rem;
+  transition: background 0.15s;
+}
+
+.btn-logout:hover { background: rgba(255,255,255,0.15); }
+
+/* ==================
+   Celda de acciones (tablas admin)
+   ================== */
+.celda-acciones {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* ==================
+   Utilitarios
+   ================== */
+.oculto { display: none !important; }

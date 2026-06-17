@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1781659389865,
+    "fecha": "2026-06-17T01:23:09.865Z",
+    "items": [
+      {
+        "productoId": 3,
+        "nombre": "Latte",
+        "precio": 60,
+        "cantidad": 2
+      },
+      {
+        "productoId": 2,
+        "nombre": "Cappuccino",
+        "precio": 55,
+        "cantidad": 1
+      },
+      {
+        "productoId": 1781659213413,
+        "nombre": "Cafe",
+        "precio": 45,
+        "cantidad": 1
+      }
+    ],
+    "clienteNombre": "Ana Torres",
+    "subtotal": 220,
+    "descuento": 0,
+    "total": 220,
+    "metodoPago": "efectivo"
+  },
+  {
+    "id": 1781659437756,
+    "fecha": "2026-06-17T01:23:57.756Z",
+    "items": [
+      {
+        "productoId": 2,
+        "nombre": "Cappuccino",
+        "precio": 55,
+        "cantidad": 1
+      },
+      {
+        "productoId": 1781659213413,
+        "nombre": "Cafe",
+        "precio": 45,
+        "cantidad": 2
+      },
+      {
+        "productoId": 7,
+        "nombre": "Muffin de Arándano",
+        "precio": 45,
+        "cantidad": 3
+      },
+      {
+        "productoId": 6,
+        "nombre": "Croissant",
+        "precio": 40,
+        "cantidad": 1
+      },
+      {
+        "productoId": 5,
+        "nombre": "Smoothie Frutos Rojos",
+        "precio": 75,
+        "cantidad": 1
+      },
+      {
+        "productoId": 1,
+        "nombre": "Café Americano",
+        "precio": 35,
+        "cantidad": 1
+      }
+    ],
+    "clienteNombre": "Ana Torres",
+    "subtotal": 430,
+    "descuento": 0,
+    "total": 430,
+    "metodoPago": "efectivo"
+  }
+]

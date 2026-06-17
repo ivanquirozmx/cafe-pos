@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "nombre": "Café Americano",
+    "categoria": "Bebidas calientes",
+    "precio": 35,
+    "disponible": true
+  },
+  {
+    "id": 2,
+    "nombre": "Cappuccino",
+    "categoria": "Bebidas calientes",
+    "precio": 55,
+    "disponible": true
+  },
+  {
+    "id": 3,
+    "nombre": "Latte",
+    "categoria": "Bebidas calientes",
+    "precio": 60,
+    "disponible": true
+  },
+  {
+    "id": 4,
+    "nombre": "Café Frío",
+    "categoria": "Bebidas frías",
+    "precio": 65,
+    "disponible": true
+  },
+  {
+    "id": 5,
+    "nombre": "Smoothie Frutos Rojos",
+    "categoria": "Bebidas frías",
+    "precio": 75,
+    "disponible": true
+  },
+  {
+    "id": 6,
+    "nombre": "Croissant",
+    "categoria": "Panadería",
+    "precio": 40,
+    "disponible": true
+  },
+  {
+    "id": 7,
+    "nombre": "Muffin de Arándano",
+    "categoria": "Panadería",
+    "precio": 45,
+    "disponible": true
+  },
+  {
+    "id": 8,
+    "nombre": "Cheesecake",
+    "categoria": "Postres",
+    "precio": 80,
+    "disponible": false
+  },
+  {
+    "id": 1781659213413,
+    "nombre": "Cafe",
+    "categoria": "Bebida",
+    "precio": 45,
+    "disponible": true,
+    "creadoEn": "2026-06-17T01:20:13.413Z"
+  }
+]
