@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();        // un "mini servidor" solo para productos
-const Product = require('../models/Product');
+const Product = require('../models/product.js');
 
 // LEER todos → GET /api/products
 router.get('/', async (req, res) => {

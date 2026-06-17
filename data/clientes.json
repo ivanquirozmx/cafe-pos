@@ -20,16 +20,18 @@
     "nombre": "Ana Torres",
     "telefono": "555-0303",
     "visitas": 5,
-    "descuento": 0,
-    "notas": ""
+    "descuento": 10,
+    "notas": "",
+    "actualizadoEn": "2026-06-17T03:00:31.912Z"
   },
   {
     "id": 1781659328555,
     "nombre": "Feank",
-    "telefono": "",
-    "visitas": 0,
+    "telefono": "449",
+    "visitas": 1,
     "descuento": 0,
     "notas": "Admin",
-    "creadoEn": "2026-06-17T01:22:08.555Z"
+    "creadoEn": "2026-06-17T01:22:08.555Z",
+    "actualizadoEn": "2026-06-17T02:57:58.071Z"
   }
 ]

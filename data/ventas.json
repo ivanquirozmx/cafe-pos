@@ -74,5 +74,34 @@
     "descuento": 0,
     "total": 430,
     "metodoPago": "efectivo"
+  },
+  {
+    "id": 1781665143862,
+    "fecha": "2026-06-17T02:59:03.862Z",
+    "items": [
+      {
+        "productoId": 1,
+        "nombre": "Café Americano",
+        "precio": 35,
+        "cantidad": 2
+      },
+      {
+        "productoId": 2,
+        "nombre": "Cappuccino",
+        "precio": 55,
+        "cantidad": 1
+      },
+      {
+        "productoId": 3,
+        "nombre": "Latte",
+        "precio": 60,
+        "cantidad": 50
+      }
+    ],
+    "clienteNombre": "Feank",
+    "subtotal": 3125,
+    "descuento": 0,
+    "total": 3125,
+    "metodoPago": "efectivo"
   }
 ]
