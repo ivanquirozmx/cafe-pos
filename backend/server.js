@@ -2,9 +2,9 @@ require('dotenv').config();        // carga las variables del .env
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const productRoutes = require('./routes/Products.js');
-const customerRoutes = require('./routes/Customers.js');  // arriba con los require
-const saleRoutes = require('./routes/Sales.js'); 
+const productRoutes  = require('./routes/products.js');
+const customerRoutes = require('./routes/customers.js');
+const saleRoutes     = require('./routes/sales.js');
 
 
 
