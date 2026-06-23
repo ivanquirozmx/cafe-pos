@@ -1,20 +1,20 @@
-const express = require('express');
-const router = express.Router();        // un "mini servidor" solo para productos
-const Product = require('../models/Product.js');
+﻿const express = require('express');
+const router = express.Router();
+const Product = require('../models/product.js');
 
 // LEER todos → GET /api/products
 router.get('/', async (req, res) => {
-  const products = await Product.find();  // trae todos de la base
+  const products = await Product.find();
   res.json(products);
 });
 
 // CREAR → POST /api/products
 router.post('/', async (req, res) => {
   try {
-    const product = await Product.create(req.body);  // req.body = datos que mandó el cliente
-    res.status(201).json(product);                   // 201 = "creado con éxito"
+    const product = await Product.create(req.body);
+    res.status(201).json(product);
   } catch (err) {
-    res.status(400).json({ error: err.message });    // 400 = "datos inválidos"
+    res.status(400).json({ error: err.message });
   }
 });
 
